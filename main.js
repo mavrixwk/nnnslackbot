@@ -16,19 +16,18 @@ controller = Botkit.slackbot({
 });
 
 //Check for bot token
-if (!process.env.token) {
-	console.log('Error: Specify token in environment');
-	process.exit(1);
-}
+//if (!process.env.token) {
+  //bot.botkit.log('Error: Specify token in environment');
+ // process.exit(1);
+//}
 //fire up the bot
 var bot = controller.spawn({
-	token: process.env.token,
-	retry: 20
+  token: "TOKEN GOES HERE",
+  retry: 20
 }).startRTM(function(err, bot, payload) {
-	if (err) {
-		throw new Error('Could not connect to Slack');
-	}
-
+  if (err) {
+    throw new Error('Could not connect to Slack');
+  }
 });
 
 
@@ -126,7 +125,7 @@ controller.hears(['^todo', '^backlog'], 'direct_message,direct_mention,mention,a
 
 
 ////ACCESS TOKEN
-helpFile.access = "Set up your guild wars account to allow lessdremoth to read data. Say 'access token help' for more information.";
+helpFile.access = "Set up your guild wars account to allow quagbot to read data. Say 'access token help' for more information.";
 
 controller.hears(['^access$'], 'direct_message,mention,direct_message,ambient', function(bot, message) {
 	//alias for access help
@@ -587,23 +586,23 @@ function reloadAllData(bypass) {
 			start = new Date().getTime();
 			numToLoad = 0;
 
-			numToLoad += 1; 
+			numToLoad += 1;
 			gw2api.load("colors", null, bypass, doneAllOtherCallback, errorCallback);
 			sf.replyWith("Starting to load colors.", true);
 
-			numToLoad += 2; 
+			numToLoad += 2;
 			sf.replyWith("Starting to load recipes.", true);
 			gw2api.load("recipes", null, bypass, doneRecipesCallback, errorCallback);
 
-			numToLoad += 1; 
+			numToLoad += 1;
 			sf.replyWith("Starting to load currencies.", true);
 			gw2api.load("currencies", null, bypass, doneAllOtherCallback, errorCallback);
 
-			numToLoad += 1; 
+			numToLoad += 1;
 			sf.replyWith("Starting to load achievements.", true);
 			gw2api.load("achievements", null, bypass, doneAllOtherCallback, errorCallback);
 
-			numToLoad += 1; 
+			numToLoad += 1;
 			sf.replyWith("Starting to load achievement categories.", true);
 			gw2api.load("achievementsCategories", null, bypass, doneAllOtherCallback, errorCallback);
 
