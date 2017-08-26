@@ -1,6 +1,6 @@
 # quagbot - A charming API abusing slackbot for the Netherfore slack team & guild
 
-Based on the lovely nnnslackbot(Lessdremoth) - A slackbot for the neuralnexus slack team
+Based on the lovely nnnslackbot (Lessdremoth) - A slackbot for the neuralnexus slack team
 
 [![npm](https://img.shields.io/npm/v/nnnslackbot.svg)](https://www.npmjs.com/package/nnnslackbot)
 [![npm](https://img.shields.io/npm/l/nnnslackbot.svg)](https://spdx.org/licenses/MIT)
