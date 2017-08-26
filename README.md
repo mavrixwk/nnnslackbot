@@ -2,8 +2,8 @@
 
 Based on the lovely nnnslackbot(Lessdremoth) - A slackbot for the neuralnexus slack team
 
-[![npm](https://img.shields.io/npm/v/quagbot.svg)](https://www.npmjs.com/package/quagbot)
-[![npm](https://img.shields.io/npm/l/quagbot.svg)](https://spdx.org/licenses/MIT)
+[![npm](https://img.shields.io/npm/v/nnnslackbot.svg)](https://www.npmjs.com/package/nnnslackbot)
+[![npm](https://img.shields.io/npm/l/nnnslackbot.svg)](https://spdx.org/licenses/MIT)
 
 A slackbot that uses the guildwars 2 API to provide some functionality to the Netherfore slack team. Provides base ingredients, item nomenclature, wiki integration, some fun reply bots and more!
 
