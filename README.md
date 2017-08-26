@@ -1,19 +1,21 @@
-# nnnslackbot - A slackbot for the neuralnexus slack team
+# quagbot - A charming API abusing slackbot for the Netherfore slack team & guild
 
-[![npm](https://img.shields.io/npm/v/nnnslackbot.svg)](https://www.npmjs.com/package/nnnslackbot)
-[![npm](https://img.shields.io/npm/l/nnnslackbot.svg)](https://spdx.org/licenses/MIT)
+Based on the lovely nnnslackbot(Lessdremoth) - A slackbot for the neuralnexus slack team
 
-A slackbot that uses the guildwars 2 API to provide some functionality to the neuralnexus slack team. Provides base ingredients, item nomenclature, some fun reply bots and more!
+[![npm](https://img.shields.io/npm/v/quagbot.svg)](https://www.npmjs.com/package/quagbot)
+[![npm](https://img.shields.io/npm/l/quagbot.svg)](https://spdx.org/licenses/MIT)
+
+A slackbot that uses the guildwars 2 API to provide some functionality to the Netherfore slack team. Provides base ingredients, item nomenclature, wiki integration, some fun reply bots and more!
 
 ## Installation
 
-Check out nnnslackbot directly from Git.
+Check out quagbot directly from Git.
 
 ```bash
-git clone git@github.com/roj42/nnnslackbot.git
+git clone git@github.com/mavrixwk/quagbot.git
 ```
 
-Then in the checkout directory, install nnnslackbot's dependencies
+Then in the checkout directory, install quagbot's dependencies
 
 ```
 bash
@@ -22,7 +24,7 @@ npm install
 
 ## Setup
 
-nnnslackbot expects a slackbot token as an environment variable called 'token'. Slackbot tokens can be setup in the Custom Integrations section of your Slack Team's settings:
+quagbot expects a slackbot token as an environment variable called 'token'. Slackbot tokens can be setup in the Custom Integrations section of your Slack Team's settings:
 https://YOUR_SLACK_TEAM_NAME.slack.com/apps/manage/custom-integrations
 
 Documentation from Slack is here:
@@ -31,17 +33,17 @@ https://api.slack.com/custom-integrations
 
 Note that the bot's name will be whatever you call it in custom integrations. The bot will automatically connect but must be invited into channels aside from the default channel you set up in custom integrations.
 
-Note! Lessdremoth uses some custom emoji. I may remove them if the bot gets at all popular. In the meantime, consider adding custom emoji with these names to your slack channel: hello, eyebulge, facepalm, gir, coollink, frasier, butt, gary_busey, fu, bustin
+Note! The original Lessdremoth that quagbot is based on uses some custom emoji. I may remove them if the bot gets at all popular. In the meantime, consider adding custom emoji with these names to your slack channel: hello, eyebulge, facepalm, gir, coollink, frasier, butt, gary_busey, fu, bustin
 
 ## Usage
-Say 'help' in a channel with nnnslackbot for a list of commands, and help 'command' for specific command help.
+Say 'help' in a channel with quagbot for a list of commands, and help 'command' for specific command help.
 
 ```
 help deaths
 ```
 
 
-nnnslackbot can save guild wars 2 access tokens to fetch account-specific data. Tell nnnslackbot 'access token help' for steps.
+quagbot can save guild wars 2 access tokens to fetch account-specific data. Tell quagbot 'access token help' for steps.
 
 ## Run with Node
 
@@ -54,17 +56,17 @@ set token=YOUR_SLACKBOT_TOKEN
 
 Then simply point node at main.js
 
-(from nnnslackbot's directory)
+(from quagbot's directory)
 ```
 bash
 node ./main.js
 ```
 
-Standard out will show (hopefully) helpful log messages whenever nnnslackbot is doing something. Save this output when submitting bugs.
+Standard out will show (hopefully) helpful log messages whenever quagbot is doing something. Save this output when submitting bugs.
 
 ## Containerized Service
 
-To launch nnnslackbot as a Docker containerized service, execute the following commands on your command line.  We recommend nesting these steps under a subdirectory so nnnslackbot and its data can be isolated.  Something as simple as this is sufficient:
+To launch quagbot as a Docker containerized service, execute the following commands on your command line.  We recommend nesting these steps under a subdirectory so quagbot and its data can be isolated.  Something as simple as this is sufficient:
 
 ```
 mkdir lessy
@@ -73,14 +75,14 @@ cd lessy
 Remember that this requires Docker, and it must be installed and started independently before running these commands.
 
 ```bash
-git clone git@github.com/roj42/nnnslackbot.git
+git clone git@github.com/mavrixwk/quagbot.git
 mkdir data
 export SLACKTOKEN=<get the current active slack token from custom integrations>
 export INSTALL_DIR=<absolute path to git clone location>
-bash $INSTALL_DIR/nnnslackbot/launch.sh
+bash $INSTALL_DIR/quagbot/launch.sh
 ```
 
-Thanks for trying out nnnslackbot. Please email the author with questions or submit issues/feature requests/general insults as issues in git and they will be seen in short order. 
+Thanks for trying out quagbot. Please email the author with questions or submit issues/feature requests/general insults as issues in git and they will be seen in short order.
 
 List of commands as of v2.17.4:
 
