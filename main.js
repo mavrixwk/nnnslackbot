@@ -24,7 +24,7 @@ controller = Botkit.slackbot({
 //}
 //fire up the bot
 var bot = controller.spawn({
-  token: "TOKEN GOES HERE",
+  token: "xoxb-74222282096-kKg9RetvH23EEakeQF9E11rp",
   retry: 20
 }).startRTM(function(err, bot, payload) {
   if (err) {
@@ -46,9 +46,9 @@ var characters = require('./characters.js');
 characters.addResponses(controller);
 characters.addHelp(helpFile);
 //add achievements
-var achievements = require('./achievements.js');
-achievements.addResponses(controller);
-achievements.addHelp(helpFile);
+//var achievements = require('./achievements.js');
+//achievements.addResponses(controller);
+//achievements.addHelp(helpFile);
 //add inventories
 var inventories = require('./inventories.js');
 inventories.addResponses(controller);
