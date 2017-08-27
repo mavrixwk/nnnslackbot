@@ -1,5 +1,7 @@
 //Craft Command for Lessdremoth
 //Author: Roger Lampe roger.lampe@gmail.com
+//Re-Re-authored: NF team
+
 var gw2api = require('./api.js');
 var sf = require('./sharedFunctions.js');
 var inventories = require('./inventories.js');

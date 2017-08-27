@@ -1,5 +1,6 @@
 //Search for prefixes by name or by stat name
 //Author: Roger Lampe roger.lampe@gmail.com
+//Re-Re-authored: NF team
 
 var sf = require('./sharedFunctions.js');
 var prefixData = sf.loadStaticDataFromFile('prefix.json');

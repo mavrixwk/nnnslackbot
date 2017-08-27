@@ -1,6 +1,7 @@
 //API for Guildwars 2
 //Originally by TimeBomb https://github.com/TimeBomb/GW2NodeLib
 //Re-Authored: Roger Lampe roger.lampe@gmail.com
+//Re-Re-authored: NF team
 
 var config = {
 	baseUrl: 'https://api.guildwars2.com/v2/',
@@ -132,12 +133,12 @@ var apiRequest = function(apiKey, options, callback, bypassCache) {
 		var retry = config.retry;
 		var retryCallback = function(error, response, body) {
 			//we're okay with
-			//200 - success 
+			//200 - success
 			//404 - no info returned, there will be a json object with 'text' we'll handle later
 			//206 - partial info, some invalid ids or whatnot. Let the good stuff through
 			if (error || !(response.statusCode == 200 || response.statusCode == 404 || response.statusCode == 206)) {
 				var msg = ((typeof response !== 'undefined') ? '[Status Code ' + response.statusCode + '] ' : '') + 'There was an error requesting the API (URL ' + url + ')' + ((error !== null) ? ': ' + error : '');
-				if (retry-- <= 0) { //Out of retries;				
+				if (retry-- <= 0) { //Out of retries;
 					callback({
 						'error': msg
 					}, {
@@ -399,7 +400,7 @@ module.exports = function() {
 						total = Math.ceil(len / fetchParams.page_size) - 1;
 						half_length = Math.ceil(total / 2);
 
-					} // up by single pages 
+					} // up by single pages
 					else {
 						if (!headers.pageTotal) headers.pageTotal = 0;
 						total = headers.pageTotal - 1;

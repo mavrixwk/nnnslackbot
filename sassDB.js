@@ -1,5 +1,6 @@
 //Template for new modules
 //Author: Roger Lampe roger.lampe@gmail.com
+//Re-Re-authored: NF team
 
 var sf = require('./sharedFunctions.js');
 var debug = false;

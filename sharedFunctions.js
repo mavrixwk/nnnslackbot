@@ -1,6 +1,7 @@
 //Shared lessdremoth functions
 //global message handling
 //Author: Roger Lampe roger.lampe@gmail.com
+//Re-Re-authored: NF team
 
 var fs = require('fs');
 var globalMessage = null;

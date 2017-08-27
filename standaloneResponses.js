@@ -1,5 +1,7 @@
-//Standalone Responses for lessdremoth that don't require more than shared functions
+//Standalone Responses for quagbot that don't require more than shared functions
 //Author: Roger Lampe roger.lampe@gmail.com
+//Re-Re-authored: NF team
+
 var helps = {};
 var sf = require('./sharedFunctions.js');
 var debug = false;

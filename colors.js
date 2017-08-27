@@ -1,5 +1,6 @@
 ///Template for new modules
 //Author: Roger Lampe roger.lampe@gmail.com
+//Re-Re-authored: NF team
 
 var sf = require('./sharedFunctions.js');
 var gw2api = require('./api.js');
@@ -178,7 +179,7 @@ module.exports = function() {
 						var colorRGB = [];
 						ret.colorLookups(commonColors, colorText, colorRGB, isFilter, userSelectString);
 						if (colorText.length > 0) {
-							if (!isScheme) { //show list of dyes					
+							if (!isScheme) { //show list of dyes
 								title = singleUser ? "Your " + (isFilter?userSelectString:sf.randomOneOf(['Oscar Season', 'spring', 'summer', 'fall', 'winter'])) + " palette of " + colorText.length + " colors!" : "All of the beautiful people are wearing:";
 								icon = singleUser ? "https://render.guildwars2.com/file/109A6B04C4E577D9266EEDA21CC30E6B800DD452/66587.png" : "https://render.guildwars2.com/file/E3EAA9D80D4216D1E092915AFD90C069CEE8E470/222694.png";
 								text = colorText.sort().join(", ");

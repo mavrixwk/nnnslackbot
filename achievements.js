@@ -1,5 +1,5 @@
-//Achievement related commadns for lessdremoth
-//Author: Roger Lampe roger.lampe@gmail.com
+//Achievement related commadns for quagbot
+//Original Lessdremoth Author: Roger Lampe roger.lampe@gmail.com
 var sf = require('./sharedFunctions.js');
 var gw2api = require('./api.js');
 var debug = false;
@@ -453,7 +453,7 @@ module.exports = function() {
   var ret = {
     addResponses: function(controller) {
       controller.hears(['^cheevo(.*)', '^cheevor(.*)', '^cheevof(.*)'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
-        //precheck: account achievements loaded 
+        //precheck: account achievements loaded
         if (!gw2api.loaded.achievements || !gw2api.loaded.achievementsCategories) {
           bot.reply(message, "I'm still loading achievement data. Please check back in a couple of minutes. If this keeps happening, try 'db reload'.");
           sf.setGlobalMessage(message);

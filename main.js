@@ -1,7 +1,9 @@
 //A botkit based guildwars helperbot
 //Main controls data load and coordinates the node files
 //Author: Roger Lampe roger.lampe@gmail.com
-var version = "2.22.04"; //major overhaul to load utilizing promises for performance, corected zintl/zintl's bug, zintl's sass, su-case for 'wei qi' prefixes (the space), fixed bug when you have done no cheevos in a category.
+//Re-Re-authored: NF team
+
+var version = "2.23"; //official quagbot fork
 debug = false; //for debug messages, passed to botkit
 start = 0; //holds start time for data loading
 var toggle = true; //global no-real-use toggle. Used at present to compare 'craft' command output formats.
@@ -261,14 +263,14 @@ controller.hears(['^access token(.*)'], 'direct_mention,mention,direct_message,a
 
 ////QUAGGANS
 helpFile.quaggans = "fetch a list of all fetchable quaggan pictures. See help quaggan.";
-helpFile.quaggan = "Takes an argument. Lessdremoth pastes a url to a picture of that quaggan for slack to fetch. Also see help quaggans. Example: 'quaggan box'";
+helpFile.quaggan = "Takes an argument. quagbot pastes a url to a picture of that quaggan for slack to fetch. Also see help quaggans. Example: 'quaggan box'";
 controller.hears(['^quaggans$', '^quaggan$'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
 	gw2api.quaggans(function(jsonList) {
 		if (jsonList.text || jsonList.error) {
 			bot.reply(message, "Oops. I got this error when asking about quaggans: " + (jsonList.text ? jsonList.text : jsonList.error));
 		} else {
 			bot.reply(message, "I found " + Object.keys(jsonList).length + ' quaggans.');
-			bot.reply(message, "Tell Lessdremoth quaggan <quaggan name> to preview!");
+			bot.reply(message, "Tell quagbot quaggan <quaggan name> to preview!");
 			bot.reply(message, jsonList.join(", "));
 		}
 	});
@@ -276,7 +278,7 @@ controller.hears(['^quaggans$', '^quaggan$'], 'direct_message,direct_mention,men
 
 controller.hears(['^quaggan (.*)', '^quaggans (.*)'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
 	var matches = message.text.match(/quaggans? (.*)/i);
-	if (!matches || !matches[1]) bot.reply(message, "Which quaggan? Tell Lessdremoth \'quaggans\' for a list.");
+	if (!matches || !matches[1]) bot.reply(message, "Which quaggan? Tell quagbot \'quaggans\' for a list.");
 	var name = sf.removePunctuationAndToLower(matches[1]);
 	if (name == 'hoodieup') name = 'hoodie-up';
 	if (name == 'hoodiedown') name = 'hoodie-down';
@@ -291,8 +293,8 @@ controller.hears(['^quaggan (.*)', '^quaggans (.*)'], 'direct_message,direct_men
 	});
 });
 
-helpFile.hello = "Lessdremoth will say hi back.";
-helpFile.hi = "Lessdremoth will say hi back.";
+helpFile.hello = "quagbot will say hi back.";
+helpFile.hi = "quagbot will say hi back.";
 controller.hears(['\\bhello\\b', '\\bhi\\b'], 'direct_message,direct_mention,mention', function(bot, message) {
 	if (message.user && message.user == 'U1AGDSX3K') {
 		bot.reply(message, "Hi, roj. You're the best");
@@ -303,11 +305,11 @@ controller.hears(['\\bhello\\b', '\\bhi\\b'], 'direct_message,direct_mention,men
 	}
 });
 
-helpFile.shutdown = "Command Lessdremoth to shut down.";
+helpFile.shutdown = "Command quagbot to shut down.";
 controller.hears(['shutdown'], 'direct_message,direct_mention,mention', function(bot, message) {
 	botShutdown(message, true); //Set to false to enable shutdown
 });
-helpFile.restart = "Command Lessdremoth to restart.";
+helpFile.restart = "Command quagbot to restart.";
 controller.hears(['restart'], 'direct_message,direct_mention,mention', function(bot, message) {
 	botShutdown(message, true);
 });
@@ -342,8 +344,8 @@ function botShutdown(message, restart) {
 
 helpFile.errors = "Is there no data? Check:\nhttps://forum-en.guildwars2.com/forum/community/api";
 helpFile.error = JSON.stringify(helpFile.errors);
-helpFile.uptime = "Lessdremoth will display some basic uptime information.";
-helpFile["who are you"] = "Lessdremoth will display some basic uptime information.";
+helpFile.uptime = "quagbot will display some basic uptime information.";
+helpFile["who are you"] = "quagbot will display some basic uptime information.";
 controller.hears(['^uptime', '^who are you'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
 	var os = require('os');
 	var hostname = os.hostname();

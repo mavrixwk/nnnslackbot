@@ -69,8 +69,8 @@ Standard out will show (hopefully) helpful log messages whenever quagbot is doin
 To launch quagbot as a Docker containerized service, execute the following commands on your command line.  We recommend nesting these steps under a subdirectory so quagbot and its data can be isolated.  Something as simple as this is sufficient:
 
 ```
-mkdir lessy
-cd lessy
+mkdir bot
+cd bot
 ```
 Remember that this requires Docker, and it must be installed and started independently before running these commands.
 

@@ -1,5 +1,7 @@
 //Dungeon Frequenter - collates dungeon frequenter achievement for all known users
 //Author: Roger Lampe roger.lampe@gmail.com
+//Re-Re-authored: NF team
+
 var gw2api = require('./api.js');
 var sf = require('./sharedFunctions.js');
 
@@ -10,7 +12,7 @@ module.exports = function() {
 		addResponses: function(controller) {
 
 			controller.hears(['^dungeonfriends(.*)', '^df(.*)', '^dungeonfriendsverbose(.*)', '^dfv(.*)'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
-				//precheck: account achievements loaded 
+				//precheck: account achievements loaded
 				if (!gw2api.loaded.achievements || !gw2api.loaded.achievementsCategories) {
 					bot.reply(message, "I'm still loading achievement data. Please check back in a couple of minutes. If this keeps happening, try 'db reload'.");
 					sf.setGlobalMessage(message);
@@ -68,7 +70,7 @@ module.exports = function() {
 							if (dungeonFrequenterCheevo.bits[achievement].text) { // almost always exists, but you never know.
 								var nameList = [];
 								for (var memberName in individualBitsArrays) {
-									for (var bit in individualBitsArrays[memberName]) //go through account bits and see if they've done the one we're looking at now 
+									for (var bit in individualBitsArrays[memberName]) //go through account bits and see if they've done the one we're looking at now
 										if (individualBitsArrays[memberName][bit] == achievement) { //they have, add to list
 										nameList.push(memberName);
 									}
