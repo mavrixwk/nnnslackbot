@@ -1,6 +1,8 @@
 //A botkit based guildwars helperbot
 //Main controls data load and coordinates the node files
 //Author: Roger Lampe roger.lampe@gmail.com
+//Re-Re-authored: NF team
+
 var version = "2.17.3"; //Sassy insults
 debug = false; //for debug messages, passed to botkit
 start = 0; //holds start time for data loading
@@ -110,10 +112,10 @@ controller.hears(['^latest$'], 'direct_message,direct_mention,mention,ambient', 
 helpFile.todo = "Display the backlog";
 controller.hears(['^todo', '^backlog'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
   var todoList = [
-    "dyes: capture subsets of users, like dungeon frequenter",
-    "Sprinkle pre-req improvments to inventories to other parts of the project. Make a generic chooser function for multi-results",
-    "add sass from slack",
-    "logging"
+    "wiki stuff",
+    "fix sass",
+    "update this todo list",
+    "ez restart"
   ];
   bot.reply(message, todoList.join("\n"));
 });
@@ -447,7 +449,7 @@ controller.hears(['^debugger'], 'direct_message,direct_mention', function(bot, m
   } else replyMessage += "...   for YOU";
 
   bot.reply(message, replyMessage);
- 
+
   bot.startPrivateConversation(message, function(err, dm) {
     dm.say('Private reply!'+ pm);
   });

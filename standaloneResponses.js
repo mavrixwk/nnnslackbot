@@ -129,8 +129,9 @@ module.exports = function() {
 			});
 
 		  //SASS
-			 controller.hears(['^sass'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
-				 ret.sass(bot, message);
+		 		sass = sf.loadStaticDataFromFile('sass.json');
+		  	controller.hears(['^sass'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
+			 	ret.sass(bot, message);
 			 });
 
 			//CATFACTS
