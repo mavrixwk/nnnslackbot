@@ -128,10 +128,10 @@ module.exports = function() {
 				bot.reply(message, reply);
 			});
 
-			// //SASS
-			// controller.hears(['^sass'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
-			// 	ret.sass(bot, message);
-			// });
+		  //SASS
+			 controller.hears(['^sass'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
+				 ret.sass(bot, message);
+			 });
 
 			//CATFACTS
 			var catFacts = sf.loadStaticDataFromFile("catFacts.json");
