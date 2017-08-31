@@ -89,3 +89,12 @@ List of commands as of v2.17.4:
 craft, bcraft, bc, asscraft, basscraft, ac, bac, shop, bshop, professionReport, pr, deaths, characters, cheevo, cheevor, cheevof, daily, today, tomorrow, wallet, dungeonWallet, dw, bank, dungeonfriends, dungeonfriendsverbose, df, dfv, prefix, suffix, mycolors, colors, mycolorscheme, colorscheme, dye, latest, todo, access, quaggans, quaggan, hello, hi, shutdown, restart, uptime, who are you, sample
 
 Responses without help: tantrum, riker, catfact, other 'easter eggs' that are easily findable in a text editor. :)
+
+## Unit Testing
+To run unit tests, simply use the command
+
+```
+npm test
+```
+
+Add unit tests to the spec folder with the word 'spec' as the end of the filename.
