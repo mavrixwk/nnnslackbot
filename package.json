@@ -1,7 +1,7 @@
 {
-  "name": "nnnslackbot",
-  "version": "1.1.4",
-  "description": "A slackbot for NNN. Provides an interface for guild wars 2 recipes, prefix nomenclature, and sass",
+  "name": "Quagbot",
+  "version": "2.2",
+  "description": "A charming API abusing slackbot for the Netherfore slack team & guild",
   "main": "main.js",
   "dependencies": {
     "botkit": "^0.1.1",
@@ -17,16 +17,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/roj42/nnnslackbot.git"
+    "url": "git+https://github.com/mavrixwk/quagbot"
   },
   "keywords": [
     "neuralnexus",
-    "lessdremoth"
+    "lessdremoth",
+    "quagbot",
+    "netherfore"
   ],
-  "author": "Roger Lampe",
+  "author": "NF",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/roj42/nnnslackbot/issues"
+    "url": "https://github.com/mavrixwk/quagbot/issues"
   },
-  "homepage": "https://github.com/roj42/nnnslackbot#readme"
+  "homepage": "https://github.com/mavrixwk/quagbot#readme"
 }

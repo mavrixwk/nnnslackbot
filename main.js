@@ -1,7 +1,8 @@
 //A botkit based guildwars helperbot
 //Main controls data load and coordinates the node files
 //Author: Roger Lampe roger.lampe@gmail.com
-var version = "2.17.3"; //Sassy insults
+//Re-Authored: NF TEAM
+var version = "2.2"; //Quagbot
 debug = false; //for debug messages, passed to botkit
 start = 0; //holds start time for data loading
 var toggle = true; //global no-real-use toggle. Used at present to compare 'craft' command output formats.
@@ -447,7 +448,7 @@ controller.hears(['^debugger'], 'direct_message,direct_mention', function(bot, m
   } else replyMessage += "...   for YOU";
 
   bot.reply(message, replyMessage);
- 
+
   bot.startPrivateConversation(message, function(err, dm) {
     dm.say('Private reply!'+ pm);
   });

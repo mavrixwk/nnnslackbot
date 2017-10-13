@@ -5,14 +5,11 @@
 var helps = {};
 var sf = require('./sharedFunctions.js');
 var debug = false;
-
 module.exports = function() {
 	var sass = sf.loadStaticDataFromFile('sass.json');
 	var lastSass = [];
 
 	var ret = {
-		messagesReceived: 12,
-
 		addResponses: function(controller) {
 
 			//sentience
@@ -55,9 +52,7 @@ module.exports = function() {
 				bot.reply(message, sf.randomOneOf(responses));
 			});
 
-			controller.hears(['\\barah\\b'], 'direct_message,ambient', function(bot, message) {
-				//\b does not work, hence the above crap
-				console.log("Arah")
+			controller.hears(['\barah\b'], 'direct_message,ambient', function(bot, message) {
 				var responses = [
 					"ARAHENGE YOU GLAD TO... oh, nevermind.",
 					"AH-RAH, OOO LA-LA",
