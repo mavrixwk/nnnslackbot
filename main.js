@@ -24,7 +24,7 @@ controller = Botkit.slackbot({
 //}
 //fire up the bot
 var bot = controller.spawn({
-  token: "xoxb-74222282096-zZfoiwI78SsKF2pLwiq6idwe",
+  token: "TOKEN GOES HERE",
   retry: 20
 }).startRTM(function(err, bot, payload) {
   if (err) {
