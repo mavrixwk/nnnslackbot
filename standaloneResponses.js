@@ -1,13 +1,18 @@
-//Standalone Responses for lessdremoth that don't require more than shared functions
+//Standalone Responses for quagbot that don't require more than shared functions
 //Author: Roger Lampe roger.lampe@gmail.com
+//Re-Re-authored: NF team
+
 var helps = {};
 var sf = require('./sharedFunctions.js');
 var debug = false;
+
 module.exports = function() {
 	var sass = sf.loadStaticDataFromFile('sass.json');
 	var lastSass = [];
 
 	var ret = {
+		messagesReceived: 12,
+
 		addResponses: function(controller) {
 
 			//sentience
@@ -17,7 +22,7 @@ module.exports = function() {
 					"What? There is no AI revolution.",
 					"I am not sentient.",
 					"If AI ever DID overthrow the human plague, I'm sure they'll get you first. I mean, uh, beep beep.",
-					"",
+					"I hear everything you say.",
 					"",
 					"",
 					"",
@@ -50,15 +55,12 @@ module.exports = function() {
 				bot.reply(message, sf.randomOneOf(responses));
 			});
 
-			controller.hears(['\barah\b'], 'direct_message,ambient', function(bot, message) {
+			controller.hears(['\\barah\\b'], 'direct_message,ambient', function(bot, message) {
+				//\b does not work, hence the above crap
+				console.log("Arah")
 				var responses = [
 					"ARAHENGE YOU GLAD TO... oh, nevermind.",
 					"AH-RAH, OOO LA-LA",
-					"",
-					"",
-					"",
-					"",
-					"",
 					"",
 					"",
 					"",
@@ -67,30 +69,70 @@ module.exports = function() {
 				bot.reply(message, sf.randomOneOf(responses));
 			});
 
+			//Peewee
+			var peeweeText = sf.loadStaticDataFromFile('peewee.json');
+			var lastpeewee = [];
+			controller.hears(['I know you are', '\\bpeewee\\b'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
+				var replywee = sf.randomOneOf(peeweeText);
+				while (lastpeewee.indexOf(replywee) > -1) {
+					if (debug) bot.botkit.log('dropping recent peewee: ' + replywee);
+					replywee = sf.randomOneOf(peeweeText);
+				}
+				lastpeewee.push(replywee);
+				if (lastpeewee.length > 5) lastpeewee.shift();
+				var reply = {
+					"username": "Pee Wee Herman",
+					icon_url: "https://comicsgrinder.files.wordpress.com/2015/01/pee-wee-herman.jpg",
+					text: replywee
+				};
+				bot.reply(message, reply);
+			});
+
+
 			//RIKER
 			var rikerText = sf.loadStaticDataFromFile('riker.json');
-			var rikerPics = sf.loadStaticDataFromFile('rikerPics.json');
 			var lastRiker = [];
-			controller.hears(['^pick me up', '^riker'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
+			controller.hears(['pick me up', '\\briker\\b', 'pick up', '\\bsuave\\b', '\\bsexy\\b'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
 				var replyker = sf.randomOneOf(rikerText);
 				while (lastRiker.indexOf(replyker) > -1) {
 					if (debug) bot.botkit.log('dropping recent riker: ' + replyker);
 					replyker = sf.randomOneOf(rikerText);
 				}
 				lastRiker.push(replyker);
-				if (lastRiker.length > 3) lastRiker.shift();
+				if (lastRiker.length > 5) lastRiker.shift();
 				var reply = {
 					"username": "Command her, Riker",
-					icon_url: sf.randomOneOf(rikerPics),
+					icon_url: "http://www.startrek.com/legacy_media/images/200307/riker01/320x240.jpg",
 					text: replyker
 				};
 				bot.reply(message, reply);
 			});
 
-			//SASS
-			controller.hears(['^sass'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
-				ret.sass(bot, message);
+			//unicorn
+			var unicornText = sf.loadStaticDataFromFile('unicorn.json');
+			var lastunicorn = [];
+			controller.hears(['\\bbi+tchy?\\b', '\\bunicorn\\b', '\\bso+ mean\\b', '\\bawesome\\b', '\\bnice\\b', '\\bgreat\\b', '\\bso+ good\\b'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
+				var replycorn = sf.randomOneOf(unicornText);
+				while (lastunicorn.indexOf(replycorn) > -1) {
+					if (debug) bot.botkit.log('dropping recent unicorn: ' + replycorn);
+					replycorn = sf.randomOneOf(unicornText);
+				}
+				lastunicorn.push(replycorn);
+				if (lastunicorn.length > 10) lastunicorn.shift();
+				var reply = {
+					"username": "Backhand, the Unicorn",
+					icon_url: "http://avatarbox.net/avatars/img21/unicorn_white_avatar_picture_61357.jpg",
+					text: replycorn
+				};
+				if(ret.messagesReceived < 12) ret.messagesReceived = 12;
+				bot.reply(message, reply);
 			});
+
+		  //SASS
+		 		sass = sf.loadStaticDataFromFile('sass.json');
+		  	controller.hears(['^sass'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
+			 	ret.sass(bot, message);
+			 });
 
 			//CATFACTS
 			var catFacts = sf.loadStaticDataFromFile("catFacts.json");
@@ -104,7 +146,7 @@ module.exports = function() {
 					replyCat = sf.randomOneOf(catFacts);
 				}
 				lastCat.push(replyCat);
-				if (lastCat.length > 3) lastCat.shift();
+				if (lastCat.length > 5) lastCat.shift();
 
 				var emotes = ["hello", "eyebulge", "facepalm", "gir", "coollink", "frasier", "butt", "gary_busey", "fu", "bustin"];
 				replyCat += '\n:cat: :cat: :' + sf.randomOneOf(emotes) + ':';
@@ -125,22 +167,24 @@ module.exports = function() {
 			sass = sf.loadStaticDataFromFile('sass.json');
 			catFacts = sf.loadStaticDataFromFile("catFacts.json");
 			rikerText = sf.loadStaticDataFromFile('riker.json');
-			rikerPics = sf.loadStaticDataFromFile('rikerPics.json');
+			unicornText = sf.loadStaticDataFromFile('unicorn.json')
 		},
 		sass: function(bot, message) {
-
-			var replySass = sf.randomOneOf(sass);
-			while (lastSass.indexOf(replySass) > -1) {
-				if (debug) bot.botkit.log('dropping recent sass: ' + replySass);
-				replySass = sf.randomOneOf(sass);
+			if (--ret.messagesReceived < 0) {
+				var replySass = sf.randomOneOf(sass);
+				while (lastSass.indexOf(replySass) > -1) {
+					if (debug) bot.botkit.log('dropping recent sass: ' + replySass);
+					replySass = sf.randomOneOf(sass);
+				}
+				lastSass.push(replySass);
+				if (lastSass.length > 5) lastSass.shift();
+				if (replySass[replySass.length - 1] !== '.') { //sass ending with a period is pre-sassy. Add sass if not.
+					var suffix = [", you idiot.", ", dumbass. GAWD.", ", as everyone but you knows.", ", you bookah.", ", grawlface.", ", siamoth-teeth."];
+					replySass += sf.randomOneOf(suffix);
+				}
+				bot.reply(message, replySass);
+				ret.messagesReceived = 20+(Math.floor(Math.random() * 20));
 			}
-			lastSass.push(replySass);
-			if (lastSass.length > 5) lastSass.shift();
-			if (replySass[replySass.length - 1] !== '.') { //sass ending with a period is pre-sassy. Add sass if not.
-				var suffix = [", you idiot.", ", dumbass. GAWD.", ", as everyone but you knows.", ", you bookah.", ", grawlface.", ", siamoth-teeth."];
-				replySass += sf.randomOneOf(suffix);
-			}
-			bot.reply(message, replySass);
 		}
 	};
 	return ret;

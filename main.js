@@ -17,13 +17,13 @@ controller = Botkit.slackbot({
 });
 
 //Check for bot token
-if (!process.env.token) {
-  bot.botkit.log('Error: Specify token in environment');
-  process.exit(1);
-}
+//if (!process.env.token) {
+  //bot.botkit.log('Error: Specify token in environment');
+ // process.exit(1);
+//}
 //fire up the bot
 var bot = controller.spawn({
-  token: process.env.token,
+  token: "xoxb-74222282096-zZfoiwI78SsKF2pLwiq6idwe",
   retry: 20
 }).startRTM(function(err, bot, payload) {
   if (err) {
@@ -63,6 +63,10 @@ prefix.addHelp(helpFile);
 var colors = require('./colors.js');
 colors.addResponses(controller);
 colors.addHelp(helpFile);
+//add wiki
+//var wiki = require('./wiki.js');
+//wiki.addResponses(controller);
+//wiki.addHelp(helpFile);
 
 //Add standalone responses: Riker, catfacts, sass
 var standalone = require('./standaloneResponses.js');
@@ -116,7 +120,7 @@ controller.hears(['^todo', '^backlog'], 'direct_message,direct_mention,mention,a
 
 
 ////ACCESS TOKEN
-helpFile.access = "Set up your guild wars account to allow lessdremoth to read data. Say 'access token help' for more information.";
+helpFile.access = "Set up your guild wars account to allow quagbot to read data. Say 'access token help' for more information.";
 controller.hears(['^access token help', '^help access', '^help access token'], 'direct_message,mention,direct_message,ambient', function(bot, message) {
   bot.reply(message, "First you'll need to log in to arena net to create a token. Do so here:\nhttps://account.arena.net/applications\nRight now I only use the 'account', 'progression', 'inventories', 'wallet' and 'characters' sections.\nCopy the token, and then say \'access token <your token>.\'");
   controller.storage.users.get(message.user, function(err, user) {
@@ -246,14 +250,14 @@ controller.hears(['^access token(.*)'], 'direct_mention,mention,direct_message,a
 
 ////QUAGGANS
 helpFile.quaggans = "fetch a list of all fetchable quaggan pictures. See help quaggan.";
-helpFile.quaggan = "Takes an argument. Lessdremoth pastes a url to a picture of that quaggan for slack to fetch. Also see help quaggans. Example: 'quaggan box'";
+helpFile.quaggan = "Takes an argument. Quagbot pastes a url to a picture of that quaggan for slack to fetch. Also see help quaggans. Example: 'quaggan box'";
 controller.hears(['^quaggans$', '^quaggan$'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
   gw2api.quaggans(function(jsonList) {
     if (jsonList.text || jsonList.error) {
       bot.reply(message, "Oops. I got this error when asking about quaggans: " + (jsonList.text ? jsonList.text : jsonList.error));
     } else {
       bot.reply(message, "I found " + Object.keys(jsonList).length + ' quaggans.');
-      bot.reply(message, "Tell Lessdremoth quaggan <quaggan name> to preview!");
+      bot.reply(message, "Tell Quagbot quaggan <quaggan name> to preview!");
       bot.reply(message, jsonList.join(", "));
     }
   });
@@ -261,7 +265,7 @@ controller.hears(['^quaggans$', '^quaggan$'], 'direct_message,direct_mention,men
 
 controller.hears(['^quaggan (.*)', '^quaggans (.*)'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
   var matches = message.text.match(/quaggans? (.*)/i);
-  if (!matches || !matches[1]) bot.reply(message, "Which quaggan? Tell Lessdremoth \'quaggans\' for a list.");
+  if (!matches || !matches[1]) bot.reply(message, "Which quaggan? Tell Quagbot \'quaggans\' for a list.");
   var name = sf.removePunctuationAndToLower(matches[1]);
   if (name == 'hoodieup') name = 'hoodie-up';
   if (name == 'hoodiedown') name = 'hoodie-down';
@@ -276,8 +280,8 @@ controller.hears(['^quaggan (.*)', '^quaggans (.*)'], 'direct_message,direct_men
   });
 });
 
-helpFile.hello = "Lessdremoth will say hi back.";
-helpFile.hi = "Lessdremoth will say hi back.";
+helpFile.hello = "quagbot will say hi back.";
+helpFile.hi = "quagbot will say hi back.";
 controller.hears(['hello', 'hi'], 'direct_message,direct_mention,mention', function(bot, message) {
   if (message.user && message.user == 'U1AGDSX3K') {
     bot.reply(message, "Hi, roj. You're the best");
@@ -288,11 +292,11 @@ controller.hears(['hello', 'hi'], 'direct_message,direct_mention,mention', funct
   }
 });
 
-helpFile.shutdown = "Command Lessdremoth to shut down.";
+helpFile.shutdown = "Command quagbot to shut down.";
 controller.hears(['shutdown'], 'direct_message,direct_mention,mention', function(bot, message) {
   botShutdown(message, true);
 });
-helpFile.restart = "Command Lessdremoth to restart.";
+helpFile.restart = "Command quagbot to restart.";
 controller.hears(['restart'], 'direct_message,direct_mention,mention', function(bot, message) {
   botShutdown(message, true);
 });
@@ -325,8 +329,8 @@ function botShutdown(message, restart) {
   });
 }
 
-helpFile.uptime = "Lessdremoth will display some basic uptime information.";
-helpFile["who are you"] = "Lessdremoth will display some basic uptime information.";
+helpFile.uptime = "quagbot will display some basic uptime information.";
+helpFile["who are you"] = "quagbot will display some basic uptime information.";
 controller.hears(['^uptime', '^who are you'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
   var os = require('os');
   var hostname = os.hostname();
@@ -351,7 +355,7 @@ controller.hears(['^uptime', '^who are you'], 'direct_message,direct_mention,men
 
   var uptime = formatUptime(process.uptime());
 
-  bot.reply(message, ':frasier: I am a bot named <@' + bot.identity.name + '> (version ' + version + '). I have been running for ' + uptime + ' on ' + hostname + '.');
+  bot.reply(message, ':clock2: I am a bot named <@' + bot.identity.name + '> (version ' + version + '). I have been running for ' + uptime + ' on ' + hostname + '.');
   var dataString = '';
   for (var type in gw2api.data)
     if (gw2api.data[type].length > 0)

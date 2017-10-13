@@ -15,7 +15,7 @@ if [ -d data/caches ]; then
   sudo rm -rf data/caches/*
 fi
 
-docker run -d --name=lessy --restart=on-failure -v $(pwd)/nnnslackbot:/nnnslackbot -v $(pwd)/data:/nnnslackbot/slackbotDB -w /nnnslackbot -e "token=$SLACKTOKEN" node:4.4.5 bash run.sh
+run -d --name=lessy --restart=on-failure -v $(pwd)/nnnslackbot:/nnnslackbot -v $(pwd)/data:/nnnslackbot/slackbotDB -w /nnnslackbot -e "token=xoxb-74222282096-lmE1b2bwDp2iQJYSnylmlZ95" node:4.4.5 bash run.sh
 
 exit $?
 
