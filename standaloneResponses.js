@@ -56,7 +56,7 @@ module.exports = function() {
 				var responses = [
 					"ARAHENGE YOU GLAD TO... oh, nevermind.",
 					"AH-RAH, OOO LA-LA",
-					"",
+					"ARAH JOKES AREN'T RELEVANT ANYMORE",
 					"",
 					"",
 					""
@@ -124,7 +124,6 @@ module.exports = function() {
 			});
 
 		  //SASS
-		 		sass = sf.loadStaticDataFromFile('sass.json');
 		  	controller.hears(['^sass'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
 			 	ret.sass(bot, message);
 			 });
@@ -143,7 +142,7 @@ module.exports = function() {
 				lastCat.push(replyCat);
 				if (lastCat.length > 5) lastCat.shift();
 
-				var emotes = ["hello", "eyebulge", "facepalm", "gir", "coollink", "frasier", "butt", "gary_busey", "fu", "bustin"];
+				var emotes = ["fehdealwithit", "sabquag", "cat", "jumpyboy", "scalyboy"];
 				replyCat += '\n:cat: :cat: :' + sf.randomOneOf(emotes) + ':';
 				var reply = {
 					"username": "A Goddamn Cat",
@@ -165,7 +164,7 @@ module.exports = function() {
 			unicornText = sf.loadStaticDataFromFile('unicorn.json')
 		},
 		sass: function(bot, message) {
-			if (--ret.messagesReceived < 0) {
+
 				var replySass = sf.randomOneOf(sass);
 				while (lastSass.indexOf(replySass) > -1) {
 					if (debug) bot.botkit.log('dropping recent sass: ' + replySass);
@@ -174,11 +173,10 @@ module.exports = function() {
 				lastSass.push(replySass);
 				if (lastSass.length > 5) lastSass.shift();
 				if (replySass[replySass.length - 1] !== '.') { //sass ending with a period is pre-sassy. Add sass if not.
-					var suffix = [", you idiot.", ", dumbass. GAWD.", ", as everyone but you knows.", ", you bookah.", ", grawlface.", ", siamoth-teeth."];
+					var suffix = [""];
 					replySass += sf.randomOneOf(suffix);
 				}
 				bot.reply(message, replySass);
-				ret.messagesReceived = 20+(Math.floor(Math.random() * 20));
 			}
 		}
 	};

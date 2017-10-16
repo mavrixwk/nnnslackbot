@@ -61,9 +61,9 @@ var prefix = require('./prefix.js');
 prefix.addResponses(controller);
 prefix.addHelp(helpFile);
 //add colors
-var colors = require('./colors.js');
-colors.addResponses(controller);
-colors.addHelp(helpFile);
+//var colors = require('./colors.js');
+//colors.addResponses(controller);
+//colors.addHelp(helpFile);
 //add wiki
 //var wiki = require('./wiki.js');
 //wiki.addResponses(controller);
@@ -78,7 +78,7 @@ standalone.addHelp(helpFile);
 var gw2api = require('./api.js');
 gw2api.setCacheTime(86400, 'quaggans');
 gw2api.setCacheTime(86400, 'currencies');
-gw2api.setCacheTime(86400, 'colors');
+//gw2api.setCacheTime(86400, 'colors');
 gw2api.setCacheTime(86400, 'items');
 gw2api.setCacheTime(86400, 'skins');
 gw2api.setCacheTime(86400, 'titles');
