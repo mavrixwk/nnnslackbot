@@ -177,6 +177,7 @@ module.exports = function() {
 					replySass += sf.randomOneOf(suffix);
 				}
 				bot.reply(message, replySass);
+				ret.messagesReceived = 20+(Math.floor(Math.random() * 20));
 			}
 		}
 	};
