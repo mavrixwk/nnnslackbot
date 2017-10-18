@@ -106,7 +106,7 @@ module.exports = function() {
 			//unicorn
 			var unicornText = sf.loadStaticDataFromFile('unicorn.json');
 			var lastunicorn = [];
-			controller.hears(['\\bbi+tchy?\\b', '\\bunicorn\\b', '\\bso+ mean\\b', '\\bawesome\\b', '\\bnice\\b', '\\bgreat\\b', '\\bso+ good\\b'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
+			controller.hears(['\\bbi+tchy?\\b', '\\bunicorn\\b', '\\bso+ mean\\b', '\\bcanada\\b'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
 				var replycorn = sf.randomOneOf(unicornText);
 				while (lastunicorn.indexOf(replycorn) > -1) {
 					if (debug) bot.botkit.log('dropping recent unicorn: ' + replycorn);
@@ -124,7 +124,6 @@ module.exports = function() {
 			});
 
 		  //SASS
-
 		  	controller.hears(['^sass'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
 			 	ret.sass(bot, message);
 			 });
@@ -174,7 +173,7 @@ module.exports = function() {
 				lastSass.push(replySass);
 				if (lastSass.length > 5) lastSass.shift();
 				if (replySass[replySass.length - 1] !== '.') { //sass ending with a period is pre-sassy. Add sass if not.
-					var suffix = [", you idiot.", ", dumbass. GAWD.", ", as everyone but you knows.", ", you bookah.", ", grawlface.", ", siamoth-teeth."];
+					var suffix = [""];
 					replySass += sf.randomOneOf(suffix);
 				}
 				bot.reply(message, replySass);
