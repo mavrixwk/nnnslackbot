@@ -124,6 +124,8 @@ module.exports = function() {
 			});
 
 		  //SASS
+				var sass = sf.loadStaticDataFromFile('sass.json');
+				var lastSass = [];
 		  	controller.hears(['^sass'], 'direct_message,direct_mention,mention,ambient', function(bot, message) {
 			 	ret.sass(bot, message);
 			 });
