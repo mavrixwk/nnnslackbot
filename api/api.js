@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 //API for Guildwars 2
 //Originally by TimeBomb https://github.com/TimeBomb/GW2NodeLib
 //Re-Authored: Roger Lampe roger.lampe@gmail.com
@@ -34,7 +36,8 @@ var config = {
 		dailiesTomorrow: 'achievements/daily/tomorrow',
 		skins: 'skins',
 		titles: 'titles',
-		minis: 'minis'
+		minis: 'minis',
+		listings: 'commerce/prices'
 	},
 	dao: { //roj42 - define useful parts of each return JSON item
 		items: ["rarity", "text", "error", "name", "id", "description", "level", "chat_link", "icon", "details", "type"],
@@ -64,7 +67,6 @@ var daoLoad = function(apiKey, rawJsonItem) {
 
 
 // Set up the cache to work with or without a file; defaults to without
-var fs = null;
 var cache = function() {
 	var container = {};
 
@@ -195,7 +197,6 @@ module.exports = function() {
 				if (typeof fileSuffix !== 'string') {
 					return false;
 				}
-				fs = require('fs');
 				config.cacheFile = fileSuffix;
 
 				for (var apiKey in config.api) {
@@ -213,7 +214,6 @@ module.exports = function() {
 				config.cachePath = '';
 				return false;
 			}
-			fs = require('fs');
 			try {
 				fs.statSync(path);
 			} catch (e) {

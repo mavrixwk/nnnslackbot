@@ -76,20 +76,7 @@ standalone.addResponses(controller);
 standalone.addHelp(helpFile);
 
 
-var gw2api = require('./api.js');
-gw2api.setCacheTime(86400, 'quaggans');
-gw2api.setCacheTime(86400, 'currencies');
-gw2api.setCacheTime(86400, 'colors');
-gw2api.setCacheTime(86400, 'items');
-gw2api.setCacheTime(86400, 'skins');
-gw2api.setCacheTime(86400, 'titles');
-gw2api.setCacheTime(86400, 'minis');
-gw2api.setCacheTime(86400, 'recipes');
-gw2api.setCacheTime(3600, 'achievements');
-gw2api.setCacheTime(3600, 'achievementsCategories');
-
-gw2api.setCachePath('./slackbotDB/caches/');
-gw2api.loadCacheFromFile('cache.json'); //note that this file name is a suffix. Creates itemscache.json, recipecache,json, and so on
+var gw2api = require('./apiService.js');
 
 reloadAllData(false);
 

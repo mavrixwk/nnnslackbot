@@ -1,4 +1,4 @@
-var sanitizer = require('../sanitizerService')
+var sanitizer = require('sanitizerService')
 var fs = require('fs');
 
 describe("sanitize functionality", function(){
